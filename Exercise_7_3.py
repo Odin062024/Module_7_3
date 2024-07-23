@@ -15,7 +15,7 @@ class Card:
         return len(self.first_name + ' ' + self.last_name)
     
     def __str__(self):
-        return f'{self.first_name} {self.last_name} {self.email}'
+        return f'{self.first_name} {self.last_name} {self.address} {self.email} '
 
 Card001 = Card(first_name=fake.first_name(), last_name=fake.last_name(), address=fake.address(), email=fake.email())
 Card002 = Card(first_name=fake.first_name(), last_name=fake.last_name(), address=fake.address(), email=fake.email())
@@ -28,13 +28,21 @@ by_first_name = sorted(list_of_cards, key=lambda Card: Card.first_name)
 by_last_name = sorted(list_of_cards, key=lambda Card: Card.last_name)
 by_email = sorted(list_of_cards, key=lambda Card: Card.email)
 
-class BaseConctact(Card):
+print(Card001)
+
+class BaseContact(Card):
     def __init__(self, phone, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.phone = phone
     
     def contact(self):
-        print(f'Wybieram numer {self.phone} i dzwonię do {self.first_name} {self.last_name}')
+        print(f'Wybieram numer +48 {self.phone} i dzwonię do {self.first_name} {self.last_name}')
+
+BaseContactCard001 = BaseContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@po', phone='600524525')
+print(BaseContactCard001)
+print(BaseContactCard001.label_length)
+BaseContact.contact(BaseContactCard001)
+#BaseContactCard001 = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(), address=fake.address(), email=fake.email(), phone=fake.phone())
 
 class BusinessContact(Card):
     def __init__(self, job, company, work_phone, *args, **kwargs):
@@ -44,6 +52,20 @@ class BusinessContact(Card):
         self.work_phone = work_phone
 
     def contact(self):
-        print(f'Wybieram numer {self.work_phone} i dzwonię do {self.first_name} {self.last_name}')
+        print(f'Wybieram numer +48 {self.work_phone} i dzwonię do {self.first_name} {self.last_name}')
 
+BusinessContactCard001 = BusinessContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@po', job='Rolnik', company='PGR', work_phone='600524526')
+print(BusinessContactCard001)
+print(BusinessContactCard001.label_length)
+BusinessContact.contact(BusinessContactCard001)
 
+def create_contacts(name_of_class, quantity):
+    if name_of_class == BaseContact:
+        list_of_baseContact = []
+        list_of_baseContact = quantity * BaseContact(first_name = fake(first_name), last_name = fake(last_name), adress = fake(adress), email = fake(email), phone = fake(phone))
+    elif name_of_class == BusinessContact:
+        list_of_businessContact = []
+        list_of_businessContact = quantity * BusinessContact(first_name = fake(first_name), last_name = fake(last_name), adress = fake(adress), email = fake(email), job = fake(job), company = fake(company), work_phone = fake(phone))
+    pass   
+
+#create_contacts(BaseContact, 2)
