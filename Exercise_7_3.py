@@ -70,16 +70,21 @@ BusinessContact.contact(BusinessContactCard001)
 
 list_of_baseContact = []
 list_of_businessContact = []
+
 def create_contacts(name_of_class, quantity):
-    if name_of_class == BaseContact:
+    if name_of_class == 'BaseContact':
         for i in range(quantity):
-            BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
+            newBaseCard = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
                                                  address=fake.address(), email=fake.email(), phone=fake.phone_number())
-    elif name_of_class == BusinessContact:
+            list_of_baseContact = list_of_baseContact + newBaseCard
+            return newBaseCard
+            
+    elif name_of_class == 'BusinessContact':
         for i in range(quantity):
-            BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
+            newBusinessCard = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
                                                          address=fake.address(), email=fake.email(), job=fake.job(),
                                                          company=fake.company(), work_phone=fake.phone_number())
+            list_of_businessContact = list_of_businessContact + newBusinessCard
 
     pass
 
