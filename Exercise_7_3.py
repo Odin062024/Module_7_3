@@ -68,13 +68,20 @@ print(BusinessContactCard001)
 print(BusinessContactCard001.label_length)
 BusinessContact.contact(BusinessContactCard001)
 
+list_of_baseContact = []
+list_of_businessContact = []
 def create_contacts(name_of_class, quantity):
     if name_of_class == BaseContact:
-        list_of_baseContact = []
-        list_of_baseContact = quantity * BaseContact(first_name = fake(first_name), last_name = fake(last_name), adress = fake(adress), email = fake(email), phone = fake(phone))
+        for i in range(quantity):
+            BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
+                                                 address=fake.address(), email=fake.email(), phone=fake.phone_number())
     elif name_of_class == BusinessContact:
-        list_of_businessContact = []
-        list_of_businessContact = quantity * BusinessContact(first_name = fake(first_name), last_name = fake(last_name), adress = fake(adress), email = fake(email), job = fake(job), company = fake(company), work_phone = fake(phone))
-    pass   
+        for i in range(quantity):
+            BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
+                                                         address=fake.address(), email=fake.email(), job=fake.job(),
+                                                         company=fake.company(), work_phone=fake.phone_number())
 
-#create_contacts(BaseContact, 2)
+    pass
+
+create_contacts(BaseContact, 2)
+create_contacts(BusinessContact, 3)
