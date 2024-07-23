@@ -32,6 +32,9 @@ class BaseConctact(Card):
     def __init__(self, phone, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.phone = phone
+    
+    def contact(self):
+        print(f'Wybieram numer {self.phone} i dzwonię do {self.first_name} {self.last_name}')
 
 class BusinessContact(Card):
     def __init__(self, job, company, work_phone, *args, **kwargs):
@@ -39,5 +42,8 @@ class BusinessContact(Card):
         self.job = job
         self.company = company
         self.work_phone = work_phone
+
+    def contact(self):
+        print(f'Wybieram numer {self.work_phone} i dzwonię do {self.first_name} {self.last_name}')
 
 
