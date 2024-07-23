@@ -35,10 +35,14 @@ class BaseContact(Card):
         super().__init__(*args, **kwargs)
         self.phone = phone
     
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} {self.address} {self.email} {self.phone}'
+        
+    
     def contact(self):
         print(f'Wybieram numer +48 {self.phone} i dzwonię do {self.first_name} {self.last_name}')
 
-BaseContactCard001 = BaseContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@po', phone='600524525')
+BaseContactCard001 = BaseContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@wp.pl', phone='600524525')
 print(BaseContactCard001)
 print(BaseContactCard001.label_length)
 BaseContact.contact(BaseContactCard001)
@@ -50,11 +54,16 @@ class BusinessContact(Card):
         self.job = job
         self.company = company
         self.work_phone = work_phone
+    
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} {self.address} {self.email} {self.job} {self.company} {self.work_phone}'
+
+
 
     def contact(self):
         print(f'Wybieram numer +48 {self.work_phone} i dzwonię do {self.first_name} {self.last_name}')
 
-BusinessContactCard001 = BusinessContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@po', job='Rolnik', company='PGR', work_phone='600524526')
+BusinessContactCard001 = BusinessContact(first_name='Klaudia', last_name='Nowak', address='Boćki 35', email='example@wp.pl', job='Rolnik', company='PGR', work_phone='600524526')
 print(BusinessContactCard001)
 print(BusinessContactCard001.label_length)
 BusinessContact.contact(BusinessContactCard001)
