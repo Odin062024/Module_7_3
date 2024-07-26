@@ -70,22 +70,22 @@ BusinessContact.contact(BusinessContactCard001)
 
 
 def create_contacts():
-  quantity = int(input("Wprowadź ilość wizytówek"))
-  type = input('Wprowadź rodzaj wizytówek (Base Contact lub Business Contact)')
-  if type == 'Base Contact':
-    for i in range(0, quantity):
-      newBaseCard = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
+    quantity = int(input("Wprowadź ilość wizytówek"))
+    type = input('Wprowadź rodzaj wizytówek (Base Contact lub Business Contact)')
+    if type == 'Base Contact':
+        for i in range(0, quantity):
+            newBaseCard = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
                                 address=fake.address(), email=fake.email(), phone=fake.phone_number())
-      print(newBaseCard)
-    pass
-  elif type == 'Business Contact':
-    for i in range(0, quantity):
-      newBusinessCard = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
+            print(newBaseCard)
+        pass
+    elif type == 'Business Contact':
+        for i in range(0, quantity):
+            newBusinessCard = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
                                         address=fake.address(), email=fake.email(), job=fake.job(),
                                         company=fake.company(), work_phone=fake.phone_number())
-      print(newBusinessCard)
-    pass
-  else:
-    print('Wprowadzono niepoprawny typ wizytówek.')
+            print(newBusinessCard)
+        pass
+    else:
+        print('Wprowadzono niepoprawny typ wizytówek.')
 
 create_contacts()
