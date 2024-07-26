@@ -68,25 +68,24 @@ print(BusinessContactCard001)
 print(BusinessContactCard001.label_length)
 BusinessContact.contact(BusinessContactCard001)
 
-list_of_baseContact = []
-list_of_businessContact = []
 
-def create_contacts(name_of_class, quantity):
-    if name_of_class == 'BaseContact':
-        for i in range(quantity):
-            newBaseCard = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
-                                                 address=fake.address(), email=fake.email(), phone=fake.phone_number())
-            list_of_baseContact = list_of_baseContact + newBaseCard
-            return newBaseCard
-            
-    elif name_of_class == 'BusinessContact':
-        for i in range(quantity):
-            newBusinessCard = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
-                                                         address=fake.address(), email=fake.email(), job=fake.job(),
-                                                         company=fake.company(), work_phone=fake.phone_number())
-            list_of_businessContact = list_of_businessContact + newBusinessCard
-
+def create_contacts():
+  quantity = int(input("Wprowadź ilość wizytówek"))
+  type = input('Wprowadź rodzaj wizytówek (Base Contact lub Business Contact)')
+  if type == 'Base Contact':
+    for i in range(0, quantity):
+      newBaseCard = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(),
+                                address=fake.address(), email=fake.email(), phone=fake.phone_number())
+      print(newBaseCard)
     pass
+  elif type == 'Business Contact':
+    for i in range(0, quantity):
+      newBusinessCard = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(),
+                                        address=fake.address(), email=fake.email(), job=fake.job(),
+                                        company=fake.company(), work_phone=fake.phone_number())
+      print(newBusinessCard)
+    pass
+  else:
+    print('Wprowadzono niepoprawny typ wizytówek.')
 
-create_contacts(BaseContact, 2)
-create_contacts(BusinessContact, 3)
+create_contacts()
